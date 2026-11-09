@@ -122,6 +122,8 @@ def resolved_config(size, model, output, data_dir, search_url, cpus):
     cfg.trainer.resume_mode = "disable"
     cfg.trainer.resume_from_path = None
     cfg.trainer.save_freq = -1
+    cfg.trainer.test_freq = -1
+    cfg.trainer.total_training_steps = 0
     cfg.trainer.log_val_generations = 0
     cfg.trainer.validation_data_dir = None
     cfg.trainer.rollout_data_dir = None

@@ -42,6 +42,7 @@ class SearchTrainer(RayPPOTrainer):
         # Do not call the base fit: there is no path to an optimizer update here.
         cfg = self.config.trainer
         if (not cfg.val_only or cfg.resume_mode != "disable" or cfg.save_freq != -1
+                or cfg.total_training_steps != 0
                 or os.environ["QA_EVAL_MODE"] != "full" or self.val_reward_fn is None):
             raise RuntimeError("This entrypoint only supports full, read-only update-0 evaluation.")
         self.global_steps = 0

@@ -32,6 +32,7 @@ def test_both_sizes_share_native_full_test_and_decoding(tmp_path):
         assert cfg.data.val_files == native.data.val_files == str(args[3] / "test.parquet")
         assert cfg.data.train_files == cfg.data.val_files
         assert cfg.trainer.val_only and cfg.trainer.resume_mode == "disable" and cfg.trainer.save_freq == -1
+        assert cfg.trainer.total_training_steps == 0 and cfg.trainer.test_freq == -1
         assert cfg.trainer.logger == ["console"]
         assert cfg.trainer.rollout_data_dir is None and cfg.trainer.validation_data_dir is None
         assert cfg.trainer.log_val_generations == 0
